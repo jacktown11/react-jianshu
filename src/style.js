@@ -70,6 +70,11 @@ ${'' /*part2:  image font */}
 }
 
 ${'' /* part3: self-define reset */}
+button{
+	border: none;
+	background-color: transparent;
+	outline: none;
+}
 `;
 
 export default GlobalStyle;
