@@ -1,0 +1,50 @@
+{
+  "users": [
+    {
+      "id": 3627484,
+      "slug": "c5580cc1c3f4",
+      "nickname": "简书大学堂",
+      "avatar_source": "http://upload.jianshu.io/users/upload_avatars/3627484/eb973bb9-37ba-4d07-acec-850c0a66d1bb.png",
+      "total_likes_count": 28812,
+      "total_wordage": 1522741,
+      "is_following_user": false
+    },
+    {
+      "id": 2558050,
+      "slug": "d99a7dfae9e4",
+      "nickname": "阿栈",
+      "avatar_source": "http://upload.jianshu.io/users/upload_avatars/2558050/7761b285-2805-4534-9870-ba7dcc7538ec.jpg",
+      "total_likes_count": 1016,
+      "total_wordage": 441304,
+      "is_following_user": false
+    },
+    {
+      "id": 2631077,
+      "slug": "90e981ba3d8d",
+      "nickname": "木清琳",
+      "avatar_source": "http://upload.jianshu.io/users/upload_avatars/2631077/dc99c361412c",
+      "total_likes_count": 2506,
+      "total_wordage": 272208,
+      "is_following_user": false
+    },
+    {
+      "id": 10849033,
+      "slug": "62eb2baf2c62",
+      "nickname": "lostdays",
+      "avatar_source": "http://upload.jianshu.io/users/upload_avatars/10849033/a3e12f47-c81c-4659-9c80-117f8b337408.jpg",
+      "total_likes_count": 1620,
+      "total_wordage": 200160,
+      "is_following_user": false
+    },
+    {
+      "id": 3292545,
+      "slug": "c4165d16d0ad",
+      "nickname": "北美之北",
+      "avatar_source": "http://upload.jianshu.io/users/upload_avatars/3292545/78f2855a-80fd-419a-9fb2-1aeed39690f0.png",
+      "total_likes_count": 2020,
+      "total_wordage": 401379,
+      "is_following_user": false
+    }
+  ],
+  "total_count": 10419
+}
