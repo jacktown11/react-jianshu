@@ -28,7 +28,9 @@ export const Banner = styled.div`
   height: 270px;
   margin-bottom: 30px;
   border-radius: 6px;
-  background-color: red;
+  img {
+    width: 100%;
+  }
 `;
 
 export const SplitLine = styled.div`

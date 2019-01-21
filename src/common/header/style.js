@@ -186,6 +186,9 @@ export const HotSearch = styled.div`
       }
     }
   }
+  .loading {
+    text-align: center;
+  }
 `;
 
 export const NavAction = styled.button`

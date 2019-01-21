@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { actionCreators } from './store';
 
 import Footer from '../../common/footer';
 
@@ -11,12 +13,24 @@ import {
 } from './style';
 
 export class Home extends Component {
+  componentWillMount() {
+    this.props.loadBannerList();
+  }
   render() {
+    let { bannerList } = this.props;
     return (
       <HomeWrapper>
         <div className='main'>
           <HomeSection className='left'>
-            <Banner>Banner</Banner>
+            <Banner>
+              <ul>
+                <li>
+                  <a>
+                    <img src={bannerList[0] && bannerList[0].src} />
+                  </a>
+                </li>
+              </ul>
+            </Banner>
             <SplitLine />
             <ArticleList />
           </HomeSection>
@@ -28,4 +42,18 @@ export class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+  bannerList: state.getIn(['home', 'bannerList'])
+});
+
+const mapDisptchToProps = (dispatch) => ({
+  loadBannerList() {
+    dispatch(actionCreators.getLoadBannerListAction());
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDisptchToProps,
+  null
+)(Home);

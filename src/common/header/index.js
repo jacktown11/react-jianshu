@@ -3,12 +3,7 @@ import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 
-import {
-  getUpdateIsFocusedAction,
-  getUpdateIsMouseInAction,
-  getLoadHotKeywordAction,
-  getGoNextPageAction
-} from './store/actionCreators';
+import { actionCreators } from './store';
 import {
   HeaderStyle,
   NavContainer,
@@ -83,18 +78,22 @@ export class Header extends Component {
                 </span>
                 换一批
               </button>
-              <ul className='keyword-list'>
-                {hotKeywordList
-                  .slice(
-                    (currentPage - 1) * COUNT_PER_PAGE,
-                    currentPage * COUNT_PER_PAGE
-                  )
-                  .map((item) => (
-                    <li className='keyword' key={item}>
-                      {item}
-                    </li>
-                  ))}
-              </ul>
+              {hotKeywordList && hotKeywordList.length ? (
+                <ul className='keyword-list'>
+                  {hotKeywordList
+                    .slice(
+                      (currentPage - 1) * COUNT_PER_PAGE,
+                      currentPage * COUNT_PER_PAGE
+                    )
+                    .map((item) => (
+                      <li className='keyword' key={item}>
+                        {item}
+                      </li>
+                    ))}
+                </ul>
+              ) : (
+                <p className='loading'>Loading...</p>
+              )}
             </HotSearch>
           </SearchBox>
           <Link to='/login'>
@@ -125,12 +124,12 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   handleFocus(isFocused, hotKeywordList) {
     if (!hotKeywordList || !hotKeywordList.size) {
-      dispatch(getLoadHotKeywordAction());
+      dispatch(actionCreators.getLoadHotKeywordAction());
     }
-    dispatch(getUpdateIsFocusedAction(isFocused));
+    dispatch(actionCreators.getUpdateIsFocusedAction(isFocused));
   },
   updateIsMouseIn(isMouseIn) {
-    dispatch(getUpdateIsMouseInAction(isMouseIn));
+    dispatch(actionCreators.getUpdateIsMouseInAction(isMouseIn));
   },
   goNextPage(currentPage, totalPage, icon) {
     // rotate the refresh icon
@@ -142,7 +141,7 @@ const mapDispatchToProps = (dispatch) => ({
     icon.style.transform = `rotate(${deg}deg)`;
 
     let nextPage = (currentPage % totalPage) + 1;
-    dispatch(getGoNextPageAction(nextPage));
+    dispatch(actionCreators.getGoNextPageAction(nextPage));
   }
 });
 
