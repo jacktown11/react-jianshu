@@ -6,10 +6,10 @@ import { toK } from '../../utils';
 import { actionCreators } from './store';
 import Header from '../../common/header';
 import Footer from '../../common/footer';
+import MySlider from '../../common/my-slider';
 import {
   HomeWrapper,
   HomeSection,
-  Banner,
   SplitLine,
   ArticleList,
   ArticleItem,
@@ -56,7 +56,6 @@ export class Home extends Component {
       handleTwoDImgHover,
       loadArticleList
     } = this.props;
-
     return (
       <HomeWrapper ref={this.homeWrapper} onScroll={this.handleScroll}>
         {/* 页头 */}
@@ -67,18 +66,7 @@ export class Home extends Component {
           {/* 左栏 */}
           <HomeSection className='left'>
             {/* 轮播图 */}
-            <Banner>
-              <ul>
-                <li>
-                  <Link to='/'>
-                    <img
-                      src={bannerList[0] && bannerList[0].src}
-                      alt='banner'
-                    />
-                  </Link>
-                </li>
-              </ul>
-            </Banner>
+            <MySlider bannerList={bannerList} />
 
             {/* 分割线 */}
             <SplitLine />
@@ -153,7 +141,7 @@ export class Home extends Component {
               />
               <div className='desc'>
                 <p className='download'>
-                  下载简书手机App<span className='iconfont'>&#xe623;</span>
+                  下载简书手机App<span className='iconfont'>&#xe601;</span>
                 </p>
                 <p className='slogan'>随时随地发现和创作内容</p>
               </div>
@@ -212,7 +200,7 @@ export class Home extends Component {
                 ))}
               </ul>
               <Link className='see-all' to='/'>
-                查看全部<span className='iconfont'>&#xe623;</span>
+                查看全部<span className='iconfont'>&#xe601;</span>
               </Link>
             </WriterList>
 

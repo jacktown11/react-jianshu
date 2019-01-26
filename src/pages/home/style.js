@@ -23,16 +23,6 @@ export const HomeSection = styled.div`
   }
 `;
 
-export const Banner = styled.div`
-  width: 100%;
-  height: 270px;
-  margin-bottom: 30px;
-  border-radius: 6px;
-  img {
-    width: 100%;
-  }
-`;
-
 export const SplitLine = styled.div`
   width: 100%;
   height: 0;
@@ -152,6 +142,9 @@ export const Download = styled.div`
     .download {
       font-size: 15px;
       color: #333;
+      .iconfont {
+        font-size: 12px;
+      }
     }
     .slogan {
       margin-top: 4px;
@@ -294,6 +287,11 @@ export const WriterList = styled.div`
     text-align: center;
     color: #787878;
     text-decoration: none;
+    .iconfont {
+      font-size: 12px;
+      position: relative;
+      top: -1px;
+    }
   }
 `;
 export const ToTopButton = styled.button`
