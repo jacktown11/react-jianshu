@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { toK } from '../../utils';
 import { actionCreators } from './store';
+import Header from '../../common/header';
 import Footer from '../../common/footer';
 import {
   HomeWrapper,
@@ -57,6 +59,9 @@ export class Home extends Component {
 
     return (
       <HomeWrapper ref={this.homeWrapper} onScroll={this.handleScroll}>
+        {/* 页头 */}
+        <Header />
+
         {/* 主内容区 */}
         <div className='main'>
           {/* 左栏 */}
@@ -93,7 +98,9 @@ export class Home extends Component {
                     <div
                       className={'content ' + (item.imgSrc ? 'with-img' : '')}
                     >
-                      <h2 className='title'>{item.title}</h2>
+                      <Link to='/detail' className='detail-link'>
+                        <h2 className='title'>{item.title}</h2>
+                      </Link>
                       <p className='abstract'>{item.abstract}</p>
                       <div className='meta'>
                         <span className='meta-item author'>

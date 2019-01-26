@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { actionCreators } from './store';
+import { actionCreators as siteActionCreators } from '../../store';
 import {
   HeaderStyle,
   NavContainer,
@@ -22,18 +23,20 @@ export class Header extends Component {
     super(props);
 
     this.refreshIcon = React.createRef();
+    this.toggleLogin = this.toggleLogin.bind(this);
   }
 
   render() {
     let {
+      isLogedIn,
       isFocused,
       isMouseIn,
       hotKeywordList,
       currentPage,
+      totalPage,
       handleFocus,
       updateIsMouseIn,
-      goNextPage,
-      totalPage
+      goNextPage
     } = this.props;
     hotKeywordList = hotKeywordList.toJS();
     return (
@@ -96,9 +99,13 @@ export class Header extends Component {
               )}
             </HotSearch>
           </SearchBox>
-          <Link to='/login'>
-            <NavItem className='right'>登录</NavItem>
-          </Link>
+
+          <NavItem
+            className='right'
+            onClick={() => this.toggleLogin(isLogedIn)}
+          >
+            {isLogedIn ? '退出' : '登录'}
+          </NavItem>
           <Link to='/'>
             <NavItem className='right'>
               <span className='iconfont'>&#xe636;</span>
@@ -108,17 +115,26 @@ export class Header extends Component {
         <NavAction>
           <span className='iconfont'>&#xe615;</span>写文章
         </NavAction>
-        <NavAction className='register'>注册</NavAction>
+        {!isLogedIn && <NavAction className='register'>注册</NavAction>}
       </HeaderStyle>
     );
   }
+  toggleLogin(isLogedIn) {
+    if (isLogedIn) {
+      this.props.logout();
+    } else {
+      this.props.history.push('/login');
+    }
+  }
 }
+
 const mapStateToProps = (state) => ({
   isFocused: state.getIn(['header', 'isFocused']),
   isMouseIn: state.getIn(['header', 'isMouseIn']),
   hotKeywordList: state.getIn(['header', 'hotKeywordList']),
   currentPage: state.getIn(['header', 'currentPage']),
-  totalPage: state.getIn(['header', 'totalPage'])
+  totalPage: state.getIn(['header', 'totalPage']),
+  isLogedIn: state.getIn(['site', 'isLogedIn'])
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -137,11 +153,13 @@ const mapDispatchToProps = (dispatch) => ({
       ? parseInt(icon.style.transform.replace(/[^\d]/gi, ''))
       : 0;
     deg += 360;
-    console.log(deg);
     icon.style.transform = `rotate(${deg}deg)`;
 
     let nextPage = (currentPage % totalPage) + 1;
     dispatch(actionCreators.getGoNextPageAction(nextPage));
+  },
+  logout() {
+    dispatch(siteActionCreators.getUpdateIsLogedInAction(false));
   }
 });
 
@@ -150,4 +168,4 @@ export { COUNT_PER_PAGE };
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(withRouter(Header));

@@ -82,6 +82,9 @@ export const ArticleItem = styled.div`
     &.with-img {
       padding-right: 165px;
     }
+    .detail-link {
+      text-decoration: none;
+    }
     .title {
       margin-bottom: 4px;
       font-size: 18px;
