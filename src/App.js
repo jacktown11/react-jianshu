@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 
 import GlobalStyle from './style';
 import Home from './pages/home';
@@ -15,13 +15,13 @@ export class App extends Component {
       <Fragment>
         <GlobalStyle />
         <Provider store={store}>
-          <BrowserRouter>
+          <HashRouter>
             <div>
               <Route path='/' exact component={Home} />
               <Route path='/detail' exact component={Detail} />
               <Route path='/login' exact component={Login} />
             </div>
-          </BrowserRouter>
+          </HashRouter>
         </Provider>
       </Fragment>
     );

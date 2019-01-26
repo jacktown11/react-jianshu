@@ -70,12 +70,12 @@ export class Home extends Component {
             <Banner>
               <ul>
                 <li>
-                  <a href='/'>
+                  <Link to='/'>
                     <img
                       src={bannerList[0] && bannerList[0].src}
                       alt='banner'
                     />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </Banner>
@@ -211,9 +211,9 @@ export class Home extends Component {
                   </li>
                 ))}
               </ul>
-              <a className='see-all' href='/'>
+              <Link className='see-all' to='/'>
                 查看全部<span className='iconfont'>&#xe623;</span>
-              </a>
+              </Link>
             </WriterList>
 
             {/* 广告 */}
